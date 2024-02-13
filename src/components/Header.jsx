@@ -1,26 +1,25 @@
 import { useState } from "react";
 import { HiBarsArrowDown, HiOutlineXMark } from "react-icons/hi2";
+import menuList from "../sampleData/menuList.json";
+import profileDetails from "../sampleData/profileDetails.json";
 import MenuOverlay from "./MenuOverlay";
 
-const Header = ({ firstName, lastName }) => {
+const Header = () => {
   const [toggle, setToggle] = useState(false);
 
   const handleClick = () => setToggle(!toggle);
 
-  const menuList = [
-    { id: 1, title: "Home" },
-    { id: 2, title: "About" },
-    { id: 3, title: "Service" },
-    { id: 4, title: "Portfolio" },
-    { id: 5, title: "Contact" },
-  ];
-
   return (
     <div className="flex items-center justify-between">
       <div>
-        <h2 className="text-[24px] font-bold text-white">
-          {firstName} <span className="text-red-500">{lastName}</span>
-        </h2>
+        {profileDetails.map((profile) => {
+          return (
+            <h2 key={profile.id} className="text-[24px] font-bold text-white">
+              {profile.firstName}
+              <span className="text-red-500"> {profile.lastName}</span>
+            </h2>
+          );
+        })}
       </div>
       <div className="hidden md:flex gap-4">
         {menuList.map((menuItem) => (
