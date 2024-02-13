@@ -1,14 +1,25 @@
 import profilePic from "../assets/ben-kolde-bs2Ba7t69mM-unsplash.jpg";
-const Hero = ({ firstName, lastName, title, stack }) => {
+import profileDetails from "../sampleData/profileDetails.json";
+
+const Hero = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 pt-10 items-center">
       <div className="mb-10">
-        {/* <p className="text-white text-[13px]">
+        <p className="text-white text-[13px]">
           HELLO THERE, WELCOME TO MY SITE
-        </p> */}
-        <p className="text-white text-[20px] font-bold">Currently I am commited towards becoming a {title} in pursuit of building seamless and engaging user experiences using {stack}
         </p>
-        <p className=" text-white-500 text-[20px] font-bold">& Building Solutions in the Cloud</p>
+        {profileDetails.map((profile) => {
+          return (
+            <p key={profile.id} className="text-white text-[20px] font-bold">
+              Currently I am commited towards becoming a {profile.title} in
+              pursuit of building seamless and engaging user experiences using
+              {profile.stack}
+            </p>
+          );
+        })}
+        <p className=" text-white-500 text-[20px] font-bold">
+          & Building Solutions in the Cloud
+        </p>
         <div className="mt-4 flex gap-4">
           <button
             className="text-white text-[12px] px-3 pb-2 py-2
